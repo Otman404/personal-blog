@@ -19,6 +19,7 @@ export const GiscusCmmentsImpl: React.FC<GiscusCommentsProps> = ({theme}) => {
         inputPosition="top"
         theme={theme}
         lang="en"
+        host="https://giscus.app"
         loading="lazy" />;
 }
 
