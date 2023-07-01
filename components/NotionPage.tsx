@@ -27,6 +27,7 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
+import { GiscusCmments } from './GiscusComments'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -173,7 +174,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const isLiteMode = lite === 'true'
 
   const { isDarkMode } = useDarkMode()
-
+  const giscusComments = React.useMemo(() => <GiscusCmments theme={isDarkMode ? 'dark' : 'light'} />, [isDarkMode])
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
     if (lite) params.lite = lite
@@ -201,6 +202,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   )
 
   const footer = React.useMemo(() => <Footer />, [])
+
+
 
   if (router.isFallback) {
     return <Loading />
@@ -233,8 +236,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const socialImage = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
+    (block as PageBlock).format?.page_cover ||
+    config.defaultPageCover,
     block
   )
 
@@ -278,6 +281,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
+        pageFooter={isBlogPost ? giscusComments : ''}
         footer={footer}
       />
 
