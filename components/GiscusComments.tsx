@@ -32,7 +32,6 @@ import * as React from 'react'
 export const GiscusCommentsImpl: React.FC<GiscusCommentsProps> = ({theme}) => {
   return (
     <div className="giscus">
-      <p>HEYY</p>
       <Helmet>
         <script src="https://giscus.app/client.js"
           data-repo="otman404/personal-blog"
