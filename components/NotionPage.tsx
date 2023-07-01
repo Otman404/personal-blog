@@ -27,7 +27,7 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
-import { GiscusCmments } from './GiscusComments'
+import { GiscusComments } from './GiscusComments'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -174,7 +174,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const isLiteMode = lite === 'true'
 
   const { isDarkMode } = useDarkMode()
-  const giscusComments = React.useMemo(() => <GiscusCmments theme={isDarkMode ? 'dark' : 'light'} />, [isDarkMode])
+  const giscusComments = React.useMemo(() => <GiscusComments theme={isDarkMode ? 'dark' : 'light'} />, [isDarkMode])
+  // const giscusComments = React.useMemo(() => <GiscusComments />, [])
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
     if (lite) params.lite = lite
